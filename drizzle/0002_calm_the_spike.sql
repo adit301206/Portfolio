@@ -1,0 +1,1 @@
+ALTER TABLE `contactMessages` ADD `read` int DEFAULT 0 NOT NULL;
