@@ -1,5 +1,5 @@
 /*
- * NOVA ScanlineSweep — a traveling cyan light sweep that crosses the card
+ * NOVA ScanlineSweep — a traveling emerald light sweep that crosses the card
  * border on hover, like a radar scan locking onto a contact.
  * Style: Orbital Command (ideas.md).
  */
@@ -14,7 +14,7 @@ export default function ScanlineSweep({ children, className = "" }: { children: 
         className="pointer-events-none absolute -top-[100%] left-0 h-[60%] w-full rotate-[24deg] origin-top-left"
         style={{
           background:
-            "linear-gradient(180deg, transparent, rgba(0,229,255,0.14), transparent)",
+            "linear-gradient(180deg, transparent, rgba(111,207,151,0.18), transparent)",
         }}
         initial={false}
         animate={{ top: ["-120%", "220%"] }}

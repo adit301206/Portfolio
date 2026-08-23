@@ -81,7 +81,7 @@ export default function BootSequence() {
             transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
           >
             <span className="font-display text-3xl font-bold tracking-[0.4em] text-nova">
-              NOVA<span className="text-amber-sig">//</span>
+              NOVA<span className="text-mint-sig">//</span>
             </span>
           </motion.div>
 
@@ -95,7 +95,7 @@ export default function BootSequence() {
                 transition={{ duration: 0.25 }}
                 className={
                   i === shown.length - 1
-                    ? "text-ml-purple tracking-wide"
+                    ? "text-mint-sig font-medium tracking-wide"
                     : "text-muted-foreground"
                 }
               >

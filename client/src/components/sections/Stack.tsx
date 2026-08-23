@@ -10,7 +10,7 @@ const GROUPS = [
   {
     icon: BrainCircuit,
     title: "AI / ML",
-    accent: "text-ml-purple",
+    accent: "text-mint-sig",
     items: PROFILE.stack.filter((s) =>
       ["TensorFlow", "PyTorch", "Scikit-Learn", "Pandas", "Plotly"].includes(s),
     ),
@@ -26,7 +26,7 @@ const GROUPS = [
   {
     icon: Code2,
     title: "Frontend",
-    accent: "text-amber-sig",
+    accent: "text-mint-sig",
     items: PROFILE.stack.filter((s) =>
       ["React", "Three.js", "JavaScript", "Tailwind v4"].includes(s),
     ),
@@ -34,7 +34,7 @@ const GROUPS = [
   {
     icon: Database,
     title: "In Progress",
-    accent: "text-mint-sig",
+    accent: "text-nova",
     items: ["Kubernetes", "Apache Kafka", "MLOps Pipelines", "LLM Fine-tuning"],
   },
 ];
@@ -76,7 +76,7 @@ export default function Stack() {
             <span className="text-nova/70">04</span> / Core Systems
           </div>
           <h2 className="font-display text-4xl sm:text-5xl font-bold tracking-tight">
-            Engineered with the <span className="text-amber-sig glow-amber">right tools</span>
+            Engineered with the <span className="text-mint-sig glow-mint">right tools</span>
           </h2>
           <p className="mt-4 max-w-2xl text-muted-foreground text-lg leading-relaxed">
             The NOVA console runs on a stack tuned for AI experiments, backend

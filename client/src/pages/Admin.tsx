@@ -133,7 +133,7 @@ export default function Admin() {
         {/* header stats */}
         <div className="flex flex-wrap items-center gap-4 mb-6">
           <div className="border-l-2 border-nova/60 pl-4">
-            <div className="font-display text-3xl font-bold text-nova glow-cyan">
+            <div className="font-display text-3xl font-bold text-nova glow-emerald">
               {listQuery.data?.messages.length ?? 0}
             </div>
             <div className="font-mono text-[9px] tracking-[0.22em] uppercase text-muted-foreground">

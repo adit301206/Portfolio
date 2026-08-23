@@ -50,8 +50,8 @@ export default function HudNav() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
-          scrolled ? "bg-[oklch(0.13_0.02_245/0.82)] backdrop-blur-xl border-b border-border" : "bg-transparent"
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          scrolled ? "bg-[#060B09]/80 backdrop-blur-md border-b border-white/10 shadow-[0_4px_20px_rgba(0,0,0,0.4)]" : "bg-transparent"
         }`}
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
@@ -59,10 +59,10 @@ export default function HudNav() {
             <img
               src="/manus-storage/nova-logo_9ce0c0e9.png"
               alt="NOVA logo"
-              className="h-9 w-9 drop-shadow-[0_0_12px_rgba(0,229,255,0.5)]"
+              className="h-9 w-9 drop-shadow-[0_0_12px_rgba(47,160,132,0.6)]"
             />
-            <span className="font-mono font-bold text-sm tracking-[0.3em] text-foreground">
-              NOVA<span className="text-nova">//</span>
+            <span className="font-mono font-bold text-sm tracking-[0.3em] text-[#FFFFFF]">
+              NOVA<span className="text-[#2FA084]">//</span>
             </span>
           </button>
 
@@ -71,16 +71,16 @@ export default function HudNav() {
               <button
                 key={s.id}
                 onClick={() => go(s.id)}
-                className={`relative px-3 py-2 font-mono text-[11px] tracking-[0.18em] uppercase transition-colors ${
-                  active === s.id ? "text-nova" : "text-muted-foreground hover:text-foreground"
+                className={`relative px-3.5 py-2 font-mono text-[11px] tracking-[0.18em] uppercase transition-colors ${
+                  active === s.id ? "text-[#6FCF97] font-semibold" : "text-[#EEEEEE] hover:text-[#6FCF97]"
                 }`}
               >
-                <span className="text-nova/60 mr-1.5">{s.label}</span>
+                <span className="text-[#2FA084] mr-1.5">{s.label}</span>
                 {s.name}
                 {active === s.id && (
                   <motion.span
                     layoutId="nav-indicator"
-                    className="absolute left-2 right-2 bottom-1 h-px bg-nova shadow-[0_0_8px_rgba(0,229,255,0.8)]"
+                    className="absolute left-2.5 right-2.5 bottom-1 h-[2px] bg-[#6FCF97] shadow-[0_0_10px_rgba(111,207,151,0.9)]"
                     transition={{ type: "spring", stiffness: 400, damping: 30 }}
                   />
                 )}
@@ -93,11 +93,11 @@ export default function HudNav() {
               href={PROFILE.github}
               target="_blank"
               rel="noreferrer"
-              className="hidden sm:inline-flex items-center gap-2 border border-border px-4 py-2 font-mono text-[11px] tracking-[0.18em] uppercase text-foreground hover:border-amber-sig hover:text-amber-sig transition-colors"
+              className="hidden sm:inline-flex items-center gap-2 border border-white/15 bg-white/[0.04] px-4 py-2 font-mono text-[11px] tracking-[0.18em] uppercase text-[#EEEEEE] hover:border-[#6FCF97] hover:text-[#6FCF97] transition-all rounded-md"
             >
               <Github size={14} />
               <span className="hidden lg:inline">GitHub</span>
-              <ArrowUpRight size={12} className="text-amber-sig" />
+              <ArrowUpRight size={12} className="text-[#6FCF97]" />
             </a>
             <button
               onClick={() => setOpen(!open)}
@@ -112,7 +112,7 @@ export default function HudNav() {
         {/* progress bar */}
         <div className="h-px w-full bg-border/40">
           <div
-            className="h-px bg-gradient-to-r from-nova via-ml-purple to-amber-sig shadow-[0_0_10px_rgba(0,229,255,0.6)]"
+            className="h-px bg-gradient-to-r from-nova via-mint-sig to-nova-dim shadow-[0_0_10px_rgba(111,207,151,0.6)]"
             style={{ width: `${progress}%` }}
           />
         </div>
@@ -131,13 +131,13 @@ export default function HudNav() {
               <span
                 className={`block h-2 w-2 rounded-full transition-all duration-300 ${
                   active === s.id
-                    ? "bg-nova shadow-[0_0_10px_rgba(0,229,255,0.9)] scale-125"
+                    ? "bg-nova shadow-[0_0_10px_rgba(47,160,132,0.9)] scale-125"
                     : "bg-border group-hover:bg-nova/60"
                 }`}
               />
               <span
                 className={`font-mono text-[9px] tracking-widest transition-colors ${
-                  active === s.id ? "text-nova" : "text-muted-foreground/60 group-hover:text-nova/70"
+                  active === s.id ? "text-nova font-semibold" : "text-muted-foreground/60 group-hover:text-nova/70"
                 }`}
               >
                 {s.label}
@@ -155,7 +155,7 @@ export default function HudNav() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-40 md:hidden bg-[oklch(0.12_0.02_245/0.96)] backdrop-blur-xl"
+            className="fixed inset-0 z-40 md:hidden bg-[oklch(0.12_0.02_175/0.96)] backdrop-blur-xl"
           >
             <div className="flex flex-col gap-1 pt-24 px-6">
               {SECTIONS.map((s, i) => (
@@ -182,7 +182,7 @@ export default function HudNav() {
                 </a>
                 <a
                   href={`mailto:${PROFILE.email}`}
-                  className="inline-flex items-center gap-2 border border-border px-4 py-3 font-mono text-[11px] tracking-[0.18em] uppercase text-amber-sig"
+                  className="inline-flex items-center gap-2 border border-border px-4 py-3 font-mono text-[11px] tracking-[0.18em] uppercase text-mint-sig"
                 >
                   <Mail size={14} /> Email
                 </a>
