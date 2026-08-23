@@ -28,21 +28,23 @@ export default function Journey() {
             <span className="text-nova/70">05</span> / Flight Log
           </div>
           <h2 className="font-display text-4xl sm:text-5xl font-bold tracking-tight">
-            Trajectory since <span className="text-nova glow-cyan">2025</span>
+            Trajectory since <span className="text-nova glow-emerald">2025</span>
           </h2>
           <p className="mt-4 max-w-2xl text-muted-foreground text-lg leading-relaxed">
             Every waypoint on the flight path — from first commit to production-ready systems.
           </p>
         </motion.div>
 
-        <div className="mt-16 relative pl-8 sm:pl-12">
-          {/* rail */}
-          <div className="absolute left-3 sm:left-[3.15rem] top-[1.35rem] bottom-6 w-px bg-border" />
+        <div className="mt-16 relative">
+          {/* rail positioned at 16px (mobile) / 24px (desktop) from outer edge */}
+          <div className="absolute left-4 sm:left-6 top-2 bottom-4 w-px bg-white/15" />
           <motion.div
-            className="absolute left-3 sm:left-[3.15rem] top-[1.35rem] bottom-6 w-px origin-top bg-gradient-to-b from-nova to-ml-purple"
+            className="absolute left-4 sm:left-6 top-2 bottom-4 w-px origin-top bg-gradient-to-b from-[#2FA084] to-[#6FCF97]"
             style={{ scaleY: railScale }}
           />
-          <div className="space-y-10">
+
+          {/* entries list with 48px (mobile) / 64px (desktop) padding */}
+          <div className="space-y-10 pl-12 sm:pl-16">
             {TIMELINE.map((t, i) => (
               <ScrollReveal
                 key={t.year}
@@ -50,16 +52,16 @@ export default function Journey() {
                 delay={0.05 * (i % 3)}
                 className="relative"
               >
-                {/* node */}
+                {/* node dot positioned at -32px / -40px relative to entry padding, placing it centered at 16px / 24px */}
                 <span
-                  className={`absolute -left-[2.15rem] sm:-left-[3.6rem] top-[0.7rem] h-3 w-3 rounded-full border-2 ${
+                  className={`absolute -left-8 sm:-left-10 -translate-x-1/2 top-1.5 h-3.5 w-3.5 rounded-full border-2 transition-all ${
                     i === TIMELINE.length - 1
-                      ? "bg-mint-sig border-mint-sig shadow-[0_0_12px_rgba(0,255,163,0.9)]"
-                      : "bg-background border-nova/70"
+                      ? "bg-[#6FCF97] border-[#6FCF97] shadow-[0_0_12px_rgba(111,207,151,0.9)]"
+                      : "bg-[#060B09] border-[#2FA084]"
                   }`}
                 />
-                <div className="font-mono text-sm text-nova tracking-[0.14em]">{t.year}</div>
-                <p className="mt-1.5 text-foreground/90 leading-relaxed max-w-xl">{t.event}</p>
+                <div className="font-mono text-sm text-[#6FCF97] tracking-[0.14em] font-semibold">{t.year}</div>
+                <p className="mt-1.5 text-[#EEEEEE]/90 leading-relaxed max-w-xl font-sans">{t.event}</p>
               </ScrollReveal>
             ))}
           </div>

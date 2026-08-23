@@ -20,7 +20,7 @@ export default function ParticleField() {
     const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x0a0f18);
+    scene.background = new THREE.Color(0x0a1412);
     const camera = new THREE.PerspectiveCamera(60, mount.clientWidth / mount.clientHeight, 0.1, 100);
     camera.position.z = 7;
 
@@ -32,9 +32,9 @@ export default function ParticleField() {
     // Particle cloud on a sphere shell with noise
     const positions = new Float32Array(COUNT * 3);
     const colors = new Float32Array(COUNT * 3);
-    const cyan = new THREE.Color(0x00e5ff);
-    const amber = new THREE.Color(0xf6c453);
-    const purple = new THREE.Color(0xc084fc);
+    const emerald = new THREE.Color(0x2fa084); // #2FA084
+    const mint = new THREE.Color(0x6fcf97);    // #6FCF97
+    const deepEmerald = new THREE.Color(0x1f6f5f); // #1F6F5F
 
     for (let i = 0; i < COUNT; i++) {
       const theta = Math.random() * Math.PI * 2;
@@ -43,7 +43,7 @@ export default function ParticleField() {
       positions[i * 3] = r * Math.sin(phi) * Math.cos(theta);
       positions[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta) * 0.75;
       positions[i * 3 + 2] = r * Math.cos(phi);
-      const c = Math.random() < 0.06 ? amber : Math.random() < 0.05 ? purple : cyan;
+      const c = Math.random() < 0.12 ? mint : Math.random() < 0.18 ? deepEmerald : emerald;
       colors[i * 3] = c.r;
       colors[i * 3 + 1] = c.g;
       colors[i * 3 + 2] = c.b;
@@ -68,10 +68,10 @@ export default function ParticleField() {
     // faint wireframe icosahedron at core
     const coreGeo = new THREE.IcosahedronGeometry(2.1, 1);
     const coreMat = new THREE.MeshBasicMaterial({
-      color: 0x00e5ff,
+      color: 0x2fa084,
       wireframe: true,
       transparent: true,
-      opacity: 0.14,
+      opacity: 0.16,
     });
     const core = new THREE.Mesh(coreGeo, coreMat);
     scene.add(core);

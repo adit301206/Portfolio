@@ -26,7 +26,7 @@ function WaypointGlyph() {
         <img
           src="/manus-storage/nova-logo_9ce0c0e9.png"
           alt=""
-          className="h-8 w-8 object-contain drop-shadow-[0_0_10px_rgba(0,229,255,0.5)]"
+          className="h-8 w-8 object-contain drop-shadow-[0_0_10px_rgba(47,160,132,0.6)]"
         />
       </motion.div>
     </div>
@@ -40,7 +40,7 @@ import Contact from "@/components/sections/Contact";
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen bg-[oklch(0.13_0.02_245)] text-foreground overflow-x-hidden">
+    <div className="relative min-h-screen bg-[oklch(0.13_0.02_175)] text-foreground overflow-x-hidden">
       <div className="nova-grain" aria-hidden="true" />
       <BootSequence />
       <CustomCursor />
@@ -48,10 +48,10 @@ export default function Home() {
       <HudNav />
       <main>
         <Hero />
-        <Ticker items={["NOVA CONSOLE", "ADIT KAPADIYA", "DATA SCIENCE", "AI SYSTEMS", "BACKEND ENGINEERING", "FULL STACK"]} accent="cyan" />
+        <Ticker items={["NOVA CONSOLE", "ADIT KAPADIYA", "DATA SCIENCE", "AI SYSTEMS", "BACKEND ENGINEERING", "FULL STACK"]} accent="emerald" />
         <WaypointGlyph />
         <About />
-        <Ticker items={["NEUROCITY", "PREPWISE", "CREDITWISE", "CALIFORNIA HOUSING", "STUDENT MANAGEMENT", "F1 PROJECT"]} accent="amber" reverse />
+        <Ticker items={["NEUROCITY", "PREPWISE", "CREDITWISE", "CALIFORNIA HOUSING", "STUDENT MANAGEMENT", "F1 PROJECT"]} accent="mint" reverse />
         <Missions />
         <Stack />
         <Journey />

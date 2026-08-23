@@ -117,25 +117,25 @@ export default function CustomCursor() {
         style={
           mode === "idle"
             ? {
-                border: "1px solid oklch(0.78 0.15 210)",
+                border: "1px solid oklch(0.64 0.11 176)",
               }
             : mode === "link"
               ? {
-                  borderColor: "oklch(0.85 0.14 210)",
-                  boxShadow: "0 0 18px rgba(0,229,255,0.25)",
+                  borderColor: "oklch(0.78 0.14 158)",
+                  boxShadow: "0 0 18px rgba(47, 160, 132, 0.35)",
                 }
               : {
-                  borderColor: "oklch(0.87 0.14 85)",
-                  boxShadow: "0 0 18px rgba(246,196,83,0.25)",
+                  borderColor: "oklch(0.64 0.11 176)",
+                  boxShadow: "0 0 18px rgba(111, 207, 151, 0.35)",
                 }
         }
       >
         {mode === "card" && (
           <>
-            <span className="absolute -top-1.5 left-1/2 h-3 w-px -translate-x-1/2 bg-amber-sig" />
-            <span className="absolute -bottom-1.5 left-1/2 h-3 w-px -translate-x-1/2 bg-amber-sig" />
-            <span className="absolute top-1/2 -left-1.5 h-px w-3 -translate-y-1/2 bg-amber-sig" />
-            <span className="absolute top-1/2 -right-1.5 h-px w-3 -translate-y-1/2 bg-amber-sig" />
+            <span className="absolute -top-1.5 left-1/2 h-3 w-px -translate-x-1/2 bg-mint-sig" />
+            <span className="absolute -bottom-1.5 left-1/2 h-3 w-px -translate-x-1/2 bg-mint-sig" />
+            <span className="absolute top-1/2 -left-1.5 h-px w-3 -translate-y-1/2 bg-mint-sig" />
+            <span className="absolute top-1/2 -right-1.5 h-px w-3 -translate-y-1/2 bg-mint-sig" />
           </>
         )}
       </div>
@@ -143,9 +143,9 @@ export default function CustomCursor() {
       <div
         ref={dotRef}
         className={`absolute left-0 top-0 h-1.5 w-1.5 rounded-full mix-blend-difference will-change-transform transition-colors duration-200 ${
-          mode === "idle" ? "bg-nova/90" : "bg-amber-sig"
+          mode === "idle" ? "bg-nova/90" : "bg-mint-sig"
         }`}
-        style={{ boxShadow: "0 0 10px rgba(0,229,255,0.9)" }}
+        style={{ boxShadow: "0 0 10px rgba(111, 207, 151, 0.9)" }}
       />
     </div>
   );

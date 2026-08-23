@@ -1,8 +1,7 @@
 /*
- * Progress Radar — flight-path position widget.
- * A circular radar dial that tracks which section (waypoint) the viewport
- * currently occupies and shows overall flight progress.
- * Style: Orbital Command (ideas.md).
+ * Progress Radar — continuous real-time flight-path position widget.
+ * Dynamically tracks user's scroll position, updating progress percentage,
+ * circular arc bar, sweep line, and waypoint blips at 60fps.
  */
 import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
@@ -16,105 +15,160 @@ const SECTIONS = [
   { id: "contact", label: "Comms" },
 ];
 
-const SIZE = 118;
-const STROKE = 4;
+const SIZE = 124;
+const STROKE = 4.5;
 
 export default function ProgressRadar() {
-  const [activeId, setActiveId] = useState("home");
+  const [activeId, setActiveId] = useState("hero");
   const [progress, setProgress] = useState(0);
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(true);
 
   useEffect(() => {
-    const onScroll = () => {
+    let ticking = false;
+
+    const updateScroll = () => {
       const y = window.scrollY;
-      const max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
-      setProgress(Math.min(1, Math.max(0, y / max)));
-      // find active section
-      let current = SECTIONS[0].id;
+      const docHeight = document.documentElement.scrollHeight;
+      const winHeight = window.innerHeight;
+      const maxScroll = Math.max(1, docHeight - winHeight);
+      const currentProgress = Math.min(1, Math.max(0, y / maxScroll));
+
+      setProgress(currentProgress);
+
+      // detect active section
+      let currentSection = SECTIONS[0].id;
       for (const s of SECTIONS) {
         const el = document.getElementById(s.id);
-        if (el && el.getBoundingClientRect().top <= window.innerHeight * 0.45) {
-          current = s.id;
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= winHeight * 0.45) {
+            currentSection = s.id;
+          }
         }
       }
-      setActiveId(current);
-      setVisible(y > window.innerHeight * 0.4);
+      setActiveId(currentSection);
+      setVisible(true);
+      ticking = false;
     };
-    onScroll();
+
+    const onScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateScroll);
+        ticking = true;
+      }
+    };
+
+    updateScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    window.addEventListener("resize", onScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
   }, []);
 
-  const activeIdx = useMemo(() => SECTIONS.findIndex((s) => s.id === activeId), [activeId]);
+  const activeIdx = useMemo(() => {
+    const idx = SECTIONS.findIndex((s) => s.id === activeId);
+    return idx >= 0 ? idx : 0;
+  }, [activeId]);
 
-  // sweep angle rotates continuously; blip marks active waypoint angle
-  const blipAngle = (activeIdx / SECTIONS.length) * 360 - 90;
+  // Center & radius geometry
   const cx = SIZE / 2;
   const cy = SIZE / 2;
-  const r = SIZE / 2 - STROKE / 2;
-  const blipX = cx + r * Math.cos((blipAngle * Math.PI) / 180);
-  const blipY = cy + r * Math.sin((blipAngle * Math.PI) / 180);
+  const r = SIZE / 2 - STROKE / 2 - 4; // 4px padding inside SVG frame
+
+  // Continuous 360deg sweep angle driven directly by scroll progress (starting top -90deg)
+  const sweepAngle = progress * 360 - 90;
+  const sweepRad = (sweepAngle * Math.PI) / 180;
+  const blipX = cx + r * Math.cos(sweepRad);
+  const blipY = cy + r * Math.sin(sweepRad);
+
+  const circumference = 2 * Math.PI * r;
+  const strokeOffset = circumference * (1 - progress);
 
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.85 }}
-      animate={{ opacity: visible ? 1 : 0, scale: visible ? 1 : 0.85 }}
-      transition={{ duration: 0.35, ease: [0.23, 1, 0.32, 1] }}
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: visible ? 1 : 0, scale: visible ? 1 : 0.9 }}
+      transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
       id="progress-radar"
-      className="fixed bottom-5 right-5 z-50 hidden md:block"
+      className="fixed bottom-6 right-6 z-50 hidden md:block"
       aria-label="Flight progress radar"
     >
-      <div className="relative hud-corner bg-background/70 backdrop-blur-md border border-nova/30 p-2 shadow-[0_0_30px_rgba(0,229,255,0.12)] cursor-none">
+      <div className="relative glass-card rounded-2xl p-2.5 border border-white/15 shadow-[0_8px_32px_0_rgba(0,0,0,0.6)] cursor-default">
         <svg width={SIZE} height={SIZE} viewBox={`0 0 ${SIZE} ${SIZE}`} className="block">
-          {/* outer ring: flight progress */}
-          <circle cx={cx} cy={cy} r={r} fill="none" stroke="oklch(0.25 0.03 245)" strokeWidth={STROKE} />
+          {/* background ring track */}
+          <circle cx={cx} cy={cy} r={r} fill="none" stroke="rgba(255, 255, 255, 0.08)" strokeWidth={STROKE} />
+
+          {/* dynamic progress arc stroke */}
           <circle
             cx={cx}
             cy={cy}
             r={r}
             fill="none"
-            stroke="oklch(0.78 0.15 210)"
+            stroke="#2FA084"
             strokeWidth={STROKE}
             strokeLinecap="round"
-            strokeDasharray={2 * Math.PI * r}
-            strokeDashoffset={2 * Math.PI * r * (1 - progress)}
+            strokeDasharray={circumference}
+            strokeDashoffset={strokeOffset}
             transform={`rotate(-90 ${cx} ${cy})`}
-            style={{ transition: "stroke-dashoffset 150ms linear" }}
+            style={{ transition: "stroke-dashoffset 40ms linear" }}
           />
-          {/* waypoint dots */}
+
+          {/* fixed section waypoint blips around ring */}
           {SECTIONS.map((s, i) => {
-            const a = ((i / SECTIONS.length) * 360 - 90) * (Math.PI / 180);
-            const x = cx + r * Math.cos(a);
-            const y = cy + r * Math.sin(a);
+            const a = ((i / (SECTIONS.length - 1)) * 360 - 90) * (Math.PI / 180);
+            const wx = cx + r * Math.cos(a);
+            const wy = cy + r * Math.sin(a);
             const active = s.id === activeId;
             return (
               <circle
                 key={s.id}
-                cx={x}
-                cy={y}
+                cx={wx}
+                cy={wy}
                 r={active ? 3.5 : 2}
-                fill={active ? "oklch(0.78 0.15 210)" : "oklch(0.35 0.02 245)"}
-                style={{ transition: "all 250ms ease" }}
+                fill={active ? "#6FCF97" : "rgba(255, 255, 255, 0.25)"}
+                style={{ transition: "all 200ms ease" }}
               />
             );
           })}
-          {/* sweep line */}
+
+          {/* live continuous radar sweep line */}
           <line
             x1={cx}
             y1={cy}
             x2={blipX}
             y2={blipY}
-            stroke="oklch(0.78 0.15 210 / 0.5)"
+            stroke="rgba(111, 207, 151, 0.7)"
             strokeWidth={1.5}
-            style={{ transition: "all 300ms cubic-bezier(0.23,1,0.32,1)" }}
+            strokeDasharray="2 2"
           />
-          {/* active waypoint blip */}
-          <circle cx={blipX} cy={blipY} r={5} fill="oklch(0.78 0.15 210)" style={{ transition: "all 300ms cubic-bezier(0.23,1,0.32,1)" }} />
-          {/* center readout */}
-          <text x={cx} y={cy - 2} textAnchor="middle" className="font-mono" fontSize={9} fill="oklch(0.75 0.02 245)" style={{ letterSpacing: "0.12em" }}>
-            {SECTIONS[activeIdx]?.label.toUpperCase() ?? ""}
+
+          {/* live continuous blip dot */}
+          <circle cx={blipX} cy={blipY} r={4.5} fill="#6FCF97" className="drop-shadow-[0_0_8px_rgba(111,207,151,0.9)]" />
+
+          {/* center readout: active section & percent */}
+          <text
+            x={cx}
+            y={cy - 3}
+            textAnchor="middle"
+            className="font-mono"
+            fontSize={9}
+            fill="#CBD5E1"
+            style={{ letterSpacing: "0.14em", fontWeight: 600 }}
+          >
+            {SECTIONS[activeIdx]?.label.toUpperCase() ?? "HERO"}
           </text>
-          <text x={cx} y={cy + 9} textAnchor="middle" className="font-mono" fontSize={8.5} fill="oklch(0.78 0.15 210)">
+          <text
+            x={cx}
+            y={cy + 10}
+            textAnchor="middle"
+            className="font-mono font-bold"
+            fontSize={11}
+            fill="#6FCF97"
+            style={{ letterSpacing: "0.08em" }}
+          >
             {Math.round(progress * 100)}%
           </text>
         </svg>

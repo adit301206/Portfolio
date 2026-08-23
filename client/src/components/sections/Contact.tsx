@@ -60,17 +60,17 @@ export default function Contact() {
             backgroundPosition: "center",
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[oklch(0.13_0.02_245)] via-[oklch(0.13_0.02_245/0.72)] to-[oklch(0.13_0.02_245/0.94)]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[oklch(0.13_0.02_175)] via-[oklch(0.13_0.02_175/0.72)] to-[oklch(0.13_0.02_175/0.94)]" />
 
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 text-center">
           <motion.div {...fades}>
             <div className="eyebrow mb-4 flex items-center justify-center gap-3">
-              <span className="blink h-2 w-2 rounded-full bg-mint-sig shadow-[0_0_10px_rgba(0,255,163,0.9)]" />
+              <span className="blink h-2 w-2 rounded-full bg-mint-sig shadow-[0_0_10px_rgba(111,207,151,0.9)]" />
               06 / Open Channel
             </div>
             <h2 className="font-display text-4xl sm:text-6xl font-bold tracking-tight leading-[1.05]">
               Let's build the <br />
-              <span className="text-nova glow-cyan"><GlitchText text="next mission" /></span> together
+              <span className="text-nova glow-emerald"><GlitchText text="next mission" /></span> together
             </h2>
             <p className="mt-6 max-w-xl mx-auto text-lg text-muted-foreground leading-relaxed">
               Open to internships, collaborations, and interesting problems in AI and data.
@@ -89,7 +89,7 @@ export default function Contact() {
               <span className="font-mono text-[10px] tracking-[0.28em] uppercase text-nova/70">
                 // Live Transmission
               </span>
-              <span className="blink h-1.5 w-1.5 rounded-full bg-mint-sig shadow-[0_0_8px_rgba(0,255,163,0.9)]" />
+              <span className="blink h-1.5 w-1.5 rounded-full bg-mint-sig shadow-[0_0_8px_rgba(111,207,151,0.9)]" />
             </div>
 
             <div className="grid sm:grid-cols-2 gap-5">
@@ -161,8 +161,8 @@ export default function Contact() {
                 type="submit"
                 disabled={mutation.isPending}
                 data-cursor="SEND"
-                className="group relative inline-flex items-center gap-2.5 bg-nova text-primary-foreground font-mono text-[12px] tracking-[0.18em] uppercase px-8 py-3.5 hover:bg-[oklch(0.85_0.14_200)] transition-colors active:scale-[0.97] disabled:opacity-60 disabled:cursor-wait"
-                style={{ boxShadow: "0 0 32px rgba(0,229,255,0.35)" }}
+                className="group relative inline-flex items-center gap-2.5 bg-nova text-primary-foreground font-mono text-[12px] tracking-[0.18em] uppercase px-8 py-3.5 hover:bg-nova/90 transition-colors active:scale-[0.97] disabled:opacity-60 disabled:cursor-wait"
+                style={{ boxShadow: "0 0 32px rgba(47,160,132,0.45)" }}
               >
                 {mutation.isPending ? <Loader2 size={14} className="animate-spin" /> : <Send size={14} />}
                 {mutation.isPending ? "Transmitting…" : "Transmit"}
@@ -175,7 +175,7 @@ export default function Contact() {
           <motion.div {...fades} transition={{ ...fades.transition, delay: 0.2 }} className="mt-10 flex flex-wrap justify-center gap-4">
             <a
               href={`mailto:${PROFILE.email}`}
-              className="inline-flex items-center gap-3 border border-border bg-[oklch(0.15_0.02_245/0.85)] backdrop-blur-sm px-8 py-4 font-mono text-[12px] tracking-[0.18em] uppercase text-foreground hover:border-amber-sig hover:text-amber-sig transition-colors active:scale-[0.97]"
+              className="inline-flex items-center gap-3 border border-border bg-[oklch(0.15_0.02_175/0.85)] backdrop-blur-sm px-8 py-4 font-mono text-[12px] tracking-[0.18em] uppercase text-foreground hover:border-mint-sig hover:text-mint-sig transition-colors active:scale-[0.97]"
             >
               <Mail size={15} />
               <span>{PROFILE.email}</span>
@@ -184,17 +184,17 @@ export default function Contact() {
               href={PROFILE.github}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-3 border border-border bg-[oklch(0.15_0.02_245/0.85)] backdrop-blur-sm px-8 py-4 font-mono text-[12px] tracking-[0.18em] uppercase text-foreground hover:border-amber-sig hover:text-amber-sig transition-colors active:scale-[0.97]"
+              className="inline-flex items-center gap-3 border border-border bg-[oklch(0.15_0.02_175/0.85)] backdrop-blur-sm px-8 py-4 font-mono text-[12px] tracking-[0.18em] uppercase text-foreground hover:border-mint-sig hover:text-mint-sig transition-colors active:scale-[0.97]"
             >
               <Github size={15} />
               <span>github.com/{PROFILE.handle}</span>
-              <ExternalLink size={13} className="text-amber-sig" />
+              <ExternalLink size={13} className="text-mint-sig" />
             </a>
           </motion.div>
         </div>
       </section>
 
-      <footer className="relative border-t border-border/50 bg-[oklch(0.115_0.018_245)]">
+      <footer className="relative border-t border-border/50 bg-[oklch(0.115_0.018_175)]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-10">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
             <div className="flex items-center gap-3">
@@ -214,7 +214,7 @@ export default function Contact() {
               <span className="hidden sm:inline">Built with React · Three.js · Framer Motion</span>
               <button
                 onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-                className="inline-flex items-center gap-2 text-nova hover:underline"
+                className="inline-flex items-center gap-2 text-nova hover:underline font-medium"
               >
                 <ArrowUp size={12} /> Return to Console
               </button>
@@ -240,7 +240,7 @@ function AnimateTransition({ success, error }: { success: boolean; error: boolea
         </div>
       )}
       {error && (
-        <div className="flex items-center gap-2 font-mono text-[11px] tracking-[0.2em] uppercase text-ml-purple">
+        <div className="flex items-center gap-2 font-mono text-[11px] tracking-[0.2em] uppercase text-destructive">
           <AlertTriangle size={13} /> Signal lost — retry or email directly.
         </div>
       )}

@@ -273,7 +273,7 @@ export default function Missions() {
             <span className="text-nova/70">03</span> / Mission Log
           </div>
           <h2 className="font-display text-4xl sm:text-5xl font-bold tracking-tight">
-            Six active <span className="text-nova glow-cyan">missions</span> logged
+            Six active <span className="text-nova glow-emerald">missions</span> logged
           </h2>
           <p className="mt-4 max-w-2xl text-muted-foreground text-lg leading-relaxed">
             Every repository represents a mission focused on solving meaningful
@@ -283,7 +283,7 @@ export default function Missions() {
 
         {/* flight-path archive rail */}
         <div className="mt-16 relative">
-          <div className="hidden lg:block absolute left-7 top-0 bottom-0 w-px bg-gradient-to-b from-nova/70 via-border to-ml-purple/60" />
+          <div className="hidden lg:block absolute left-7 top-0 bottom-0 w-px bg-gradient-to-b from-nova/70 via-border to-mint-sig/60" />
           <div className="space-y-10 lg:space-y-12 lg:pl-20">
             {PROJECTS.map((p, i) => (
               <div key={p.id} className="relative">
@@ -291,8 +291,8 @@ export default function Missions() {
                 <span
                   className={`hidden lg:flex absolute -left-20 top-8 h-14 w-14 items-center justify-center rounded-full border border-border/70 bg-background font-mono text-[11px] font-semibold ${
                     p.category === "AI"
-                      ? "text-ml-purple border-ml-purple/50 shadow-[0_0_18px_rgba(192,132,252,0.25)]"
-                      : "text-nova border-nova/50 shadow-[0_0_18px_rgba(0,229,255,0.2)]"
+                      ? "text-mint-sig border-mint-sig/50 shadow-[0_0_18px_rgba(111,207,151,0.25)]"
+                      : "text-nova border-nova/50 shadow-[0_0_18px_rgba(47,160,132,0.25)]"
                   }`}
                   aria-hidden="true"
                 >

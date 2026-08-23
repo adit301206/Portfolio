@@ -58,35 +58,33 @@ export default function About() {
       {/* background accent */}
       <div
         className="pointer-events-none absolute -right-40 top-20 w-[34rem] h-[34rem] rounded-full opacity-[0.07]"
-        style={{ background: "radial-gradient(circle, oklch(0.78 0.15 210), transparent 65%)" }}
-      />
-
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
+        style={{ background: "radial-gradient(circle, oklch(0.64 0.11 176), transparent 65%)" }}
+      />        <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
         <motion.div {...fades} className="eyebrow mb-4">
-          <span className="text-nova/70">02</span> / Operator Dossier
+          <span className="text-[#2FA084] mr-1.5 font-mono">02</span> / Operator Dossier
         </motion.div>
-        <motion.h2 {...fades} transition={{ ...fades.transition, delay: 0.08 }} className="font-display text-4xl sm:text-5xl font-bold tracking-tight">
-          The mind behind <span className="text-nova glow-cyan">the console</span>
+        <motion.h2 {...fades} transition={{ ...fades.transition, delay: 0.08 }} className="font-display text-4xl sm:text-5xl font-bold tracking-tight text-[#FFFFFF]">
+          The mind behind <span className="text-[#6FCF97]">the console</span>
         </motion.h2>
 
         <div className="mt-14 grid lg:grid-cols-12 gap-12">
           {/* bio */}
           <motion.div {...fades} transition={{ ...fades.transition, delay: 0.14 }} className="lg:col-span-7 space-y-6">
-            <p className="text-lg leading-relaxed text-muted-foreground">
+            <p className="text-lg leading-relaxed text-[#EEEEEE]/90 font-sans">
               {PROFILE.bio}
             </p>
-            <p className="text-lg leading-relaxed text-muted-foreground">
+            <p className="text-lg leading-relaxed text-[#EEEEEE]/90 font-sans">
               Every repository is an active mission — from an AI-powered exam tutor to a
               city-scale digital twin with real-time deep learning inference. The thread
-              connecting them is the same: <span className="text-foreground font-medium">turn raw data into decisions</span>.
+              connecting them is the same: <span className="text-[#FFFFFF] font-semibold">turn raw data into decisions</span>.
             </p>
-            <p className="text-lg leading-relaxed text-muted-foreground">
-              Currently focused on <span className="text-nova">machine learning</span> and{" "}
-              <span className="text-nova">backend engineering</span>, with production-ready Django and
+            <p className="text-lg leading-relaxed text-[#EEEEEE]/90 font-sans">
+              Currently focused on <span className="text-[#6FCF97] font-semibold">machine learning</span> and{" "}
+              <span className="text-[#6FCF97] font-semibold">backend engineering</span>, with production-ready Django and
               Node systems already shipping, and a trajectory set on data science.
             </p>
 
-            <div className="grid sm:grid-cols-3 gap-px bg-border/50 border border-border/50">
+            <div className="grid sm:grid-cols-3 gap-4 mt-8">
               {[
                 {
                   icon: Brain,
@@ -110,11 +108,11 @@ export default function About() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-60px" }}
                   transition={{ delay: 0.2 + i * 0.08, duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
-                  className="hud-corner bg-card/60 p-6 group"
+                  className="glass-card rounded-2xl p-6 group hover:border-[#6FCF97]/40 transition-all"
                 >
-                  <f.icon size={22} className="text-nova mb-4 group-hover:drop-shadow-[0_0_10px_rgba(0,229,255,0.8)] transition-all" />
-                  <h3 className="font-display font-semibold text-foreground mb-2">{f.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{f.text}</p>
+                  <f.icon size={22} className="text-[#6FCF97] mb-4 group-hover:drop-shadow-[0_0_10px_rgba(111,207,151,0.8)] transition-all" />
+                  <h3 className="font-display font-semibold text-[#FFFFFF] mb-2">{f.title}</h3>
+                  <p className="text-sm text-[#CBD5E1] leading-relaxed font-sans">{f.text}</p>
                 </motion.div>
               ))}
             </div>
@@ -125,17 +123,17 @@ export default function About() {
             <ScrollReveal direction="left" delay={0.1} className="sticky top-24">
               <motion.div
                 style={{ y }}
-                className="hud-corner border border-border/60 bg-card/50 backdrop-blur-sm p-8"
+                className="glass-card rounded-2xl p-8 border border-white/12 shadow-[0_8px_32px_rgba(0,0,0,0.5)]"
               >
-              <div className="font-mono text-[10px] tracking-[0.28em] uppercase text-muted-foreground mb-8">
-                Telemetry · Live
+              <div className="font-mono text-[10px] tracking-[0.28em] uppercase text-[#6FCF97] font-semibold mb-8">
+                Telemetry · Live Operations
               </div>
               <div className="grid grid-cols-2 gap-x-8 gap-y-10">
                 {[
-                  { n: PROFILE.stats.commits, l: "Commits Logged", color: "text-nova glow-cyan" },
-                  { n: PROFILE.stats.prs, l: "Pull Requests Merged", color: "text-amber-sig glow-amber" },
-                  { n: PROFILE.stats.repos, l: "Repositories", color: "text-ml-purple" },
-                  { n: PROFILE.stats.followers, l: "Network Followers", color: "text-mint-sig" },
+                  { n: PROFILE.stats.commits, l: "Commits Logged" },
+                  { n: PROFILE.stats.prs, l: "Pull Requests Merged" },
+                  { n: PROFILE.stats.repos, l: "Repositories" },
+                  { n: PROFILE.stats.followers, l: "Network Followers" },
                 ].map((s, i) => (
                   <motion.div
                     key={s.l}
@@ -143,17 +141,17 @@ export default function About() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-40px" }}
                     transition={{ delay: 0.3 + i * 0.09, duration: 0.5 }}
-                    className="border-l-2 border-border pl-4"
+                    className="border-l-2 border-white/20 pl-4"
                   >
-                    <div className={`font-display text-5xl font-bold ${s.color}`}>
+                    <div className="font-display text-5xl font-bold text-[#FFFFFF] drop-shadow-[0_2px_10px_rgba(255,255,255,0.15)]">
                       <CountUp value={s.n} />
                     </div>
-                    <div className="font-mono text-[10px] tracking-[0.22em] uppercase text-muted-foreground mt-2">{s.l}</div>
+                    <div className="font-mono text-[10px] tracking-[0.22em] uppercase text-[#6FCF97] font-semibold mt-2">{s.l}</div>
                   </motion.div>
                 ))}
               </div>
-              <div className="mt-10 pt-6 border-t border-border/50 font-mono text-[10px] tracking-[0.2em] uppercase text-muted-foreground flex items-center gap-3">
-                <span className="blink h-2 w-2 rounded-full bg-mint-sig shadow-[0_0_8px_rgba(0,255,163,0.8)]" />
+              <div className="mt-10 pt-6 border-t border-white/10 font-mono text-[10px] tracking-[0.2em] uppercase text-[#CBD5E1] flex items-center gap-3">
+                <span className="blink h-2 w-2 rounded-full bg-[#6FCF97] shadow-[0_0_10px_rgba(111,207,151,0.9)]" />
                 Status: Active Mission Operator
               </div>
               </motion.div>
