@@ -40,7 +40,7 @@ import Contact from "@/components/sections/Contact";
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen bg-[oklch(0.13_0.02_175)] text-foreground overflow-x-hidden">
+    <div className="relative min-h-screen bg-background text-foreground transition-colors duration-300 overflow-x-hidden">
       <div className="nova-grain" aria-hidden="true" />
       <BootSequence />
       <CustomCursor />
