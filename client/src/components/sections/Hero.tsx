@@ -90,8 +90,8 @@ function HeroContent() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <span className="blink h-2 w-2 rounded-full bg-[#6FCF97] shadow-[0_0_12px_rgba(111,207,151,0.9)]" />
-            <span className="text-[#CBD5E1] tracking-[0.25em]">SYSTEM ONLINE · ENGINEERING INTELLIGENCE CONSOLE</span>
+            <span className="blink h-2 w-2 rounded-full bg-primary dark:bg-[#6FCF97] shadow-[0_0_12px_rgba(47,160,132,0.9)]" />
+            <span className="text-muted-foreground tracking-[0.25em]">SYSTEM ONLINE · ENGINEERING INTELLIGENCE CONSOLE</span>
           </motion.div>
 
           <h1 className="font-display font-bold leading-[1.02] tracking-tight">
@@ -108,13 +108,13 @@ function HeroContent() {
           </h1>
 
           <motion.p
-            className="mt-7 max-w-xl text-lg text-[#EEEEEE]/90 leading-relaxed font-sans"
+            className="mt-7 max-w-xl text-lg text-foreground/90 leading-relaxed font-sans"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.65, duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
           >
-            IT student charting a trajectory toward <span className="text-[#6FCF97] font-semibold">Data Science</span>.
-            Building <span className="text-[#6FCF97] font-semibold">AI systems</span>, data pipelines, and full-stack web missions from the NOVA console.
+            IT student charting a trajectory toward <span className="text-primary dark:text-[#6FCF97] font-semibold">Data Science</span>.
+            Building <span className="text-primary dark:text-[#6FCF97] font-semibold">AI systems</span>, data pipelines, and full-stack web missions from the NOVA console.
           </motion.p>
 
           {/* CTAs */}
@@ -139,12 +139,12 @@ function HeroContent() {
             >
               <Github size={14} />
               <span>github.com/{PROFILE.handle}</span>
-              <ArrowUpRight size={13} className="text-[#6FCF97]" />
+              <ArrowUpRight size={13} className="text-primary dark:text-[#6FCF97]" />
             </a>
             <ResumeButton />
           </motion.div>
 
-          {/* telemetry numbers — white stat counters with mint labels */}
+          {/* telemetry numbers */}
           <motion.div
             className="mt-14 grid grid-cols-3 gap-6 max-w-md"
             initial={{ opacity: 0, y: 16 }}
@@ -158,14 +158,14 @@ function HeroContent() {
             ].map((s, i) => (
               <motion.div
                 key={s.l}
-                className="border-l-2 border-white/20 pl-4 transition-colors hover:border-[#6FCF97]"
+                className="border-l-2 border-border pl-4 transition-colors hover:border-primary"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 1.1 + i * 0.12, duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
                 whileHover={{ x: 4 }}
               >
-                <div className="font-display text-3.5xl font-bold text-[#FFFFFF] drop-shadow-[0_2px_10px_rgba(255,255,255,0.15)]">{s.n}</div>
-                <div className="font-mono text-[10px] tracking-[0.22em] uppercase text-[#6FCF97] font-semibold mt-1">{s.l}</div>
+                <div className="font-display text-3.5xl font-bold text-foreground">{s.n}</div>
+                <div className="font-mono text-[10px] tracking-[0.22em] uppercase text-primary dark:text-[#6FCF97] font-semibold mt-1">{s.l}</div>
               </motion.div>
             ))}
           </motion.div>

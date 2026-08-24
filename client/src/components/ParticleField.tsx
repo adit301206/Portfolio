@@ -27,7 +27,7 @@ export default function ParticleField() {
     const isDark = theme === "dark";
 
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(isDark ? 0x060b09 : 0xf8faf9);
+    scene.background = new THREE.Color(isDark ? 0x060b09 : 0xf4f7f5);
     sceneRef.current = scene;
 
     const camera = new THREE.PerspectiveCamera(60, mount.clientWidth / mount.clientHeight, 0.1, 100);
@@ -136,7 +136,7 @@ export default function ParticleField() {
   useEffect(() => {
     const isDark = theme === "dark";
     if (sceneRef.current) {
-      sceneRef.current.background = new THREE.Color(isDark ? 0x060b09 : 0xf8faf9);
+      sceneRef.current.background = new THREE.Color(isDark ? 0x060b09 : 0xf4f7f5);
     }
     if (materialRef.current) {
       materialRef.current.opacity = isDark ? 1.0 : 0.2;

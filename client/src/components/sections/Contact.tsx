@@ -60,7 +60,7 @@ export default function Contact() {
             backgroundPosition: "center",
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[oklch(0.13_0.02_175)] via-[oklch(0.13_0.02_175/0.72)] to-[oklch(0.13_0.02_175/0.94)]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/80 to-background/95" />
 
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 text-center">
           <motion.div {...fades}>
@@ -175,7 +175,7 @@ export default function Contact() {
           <motion.div {...fades} transition={{ ...fades.transition, delay: 0.2 }} className="mt-10 flex flex-wrap justify-center gap-4">
             <a
               href={`mailto:${PROFILE.email}`}
-              className="inline-flex items-center gap-3 border border-border bg-[oklch(0.15_0.02_175/0.85)] backdrop-blur-sm px-8 py-4 font-mono text-[12px] tracking-[0.18em] uppercase text-foreground hover:border-mint-sig hover:text-mint-sig transition-colors active:scale-[0.97]"
+              className="inline-flex items-center gap-3 border border-border bg-card/85 backdrop-blur-sm px-8 py-4 font-mono text-[12px] tracking-[0.18em] uppercase text-foreground hover:border-primary hover:text-primary transition-colors active:scale-[0.97]"
             >
               <Mail size={15} />
               <span>{PROFILE.email}</span>
@@ -184,17 +184,17 @@ export default function Contact() {
               href={PROFILE.github}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-3 border border-border bg-[oklch(0.15_0.02_175/0.85)] backdrop-blur-sm px-8 py-4 font-mono text-[12px] tracking-[0.18em] uppercase text-foreground hover:border-mint-sig hover:text-mint-sig transition-colors active:scale-[0.97]"
+              className="inline-flex items-center gap-3 border border-border bg-card/85 backdrop-blur-sm px-8 py-4 font-mono text-[12px] tracking-[0.18em] uppercase text-foreground hover:border-primary hover:text-primary transition-colors active:scale-[0.97]"
             >
               <Github size={15} />
               <span>github.com/{PROFILE.handle}</span>
-              <ExternalLink size={13} className="text-mint-sig" />
+              <ExternalLink size={13} className="text-primary" />
             </a>
           </motion.div>
         </div>
       </section>
 
-      <footer className="relative border-t border-border/50 bg-[oklch(0.115_0.018_175)]">
+      <footer className="relative border-t border-border bg-card">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-10">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
             <div className="flex items-center gap-3">
