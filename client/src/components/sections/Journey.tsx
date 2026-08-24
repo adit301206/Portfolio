@@ -57,11 +57,11 @@ export default function Journey() {
                   className={`absolute -left-8 sm:-left-10 -translate-x-1/2 top-1.5 h-3.5 w-3.5 rounded-full border-2 transition-all ${
                     i === TIMELINE.length - 1
                       ? "bg-[#6FCF97] border-[#6FCF97] shadow-[0_0_12px_rgba(111,207,151,0.9)]"
-                      : "bg-[#060B09] border-[#2FA084]"
+                      : "bg-background border-primary"
                   }`}
                 />
-                <div className="font-mono text-sm text-[#6FCF97] tracking-[0.14em] font-semibold">{t.year}</div>
-                <p className="mt-1.5 text-[#EEEEEE]/90 leading-relaxed max-w-xl font-sans">{t.event}</p>
+                <div className="font-mono text-sm text-accent tracking-[0.14em] font-semibold">{t.year}</div>
+                <p className="mt-1.5 text-foreground/90 leading-relaxed max-w-xl font-sans">{t.event}</p>
               </ScrollReveal>
             ))}
           </div>

@@ -6,21 +6,30 @@
  */
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
+import { useTheme } from "@/contexts/ThemeContext";
 
 const COUNT = 460;
 const RADIUS = 4.4;
 
 export default function ParticleField() {
   const mountRef = useRef<HTMLDivElement>(null);
+  const { theme } = useTheme();
+
+  const sceneRef = useRef<THREE.Scene | null>(null);
+  const materialRef = useRef<THREE.PointsMaterial | null>(null);
+  const coreMatRef = useRef<THREE.MeshBasicMaterial | null>(null);
 
   useEffect(() => {
     const mount = mountRef.current;
     if (!mount) return;
 
     const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const isDark = theme === "dark";
 
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x0a1412);
+    scene.background = new THREE.Color(isDark ? 0x060b09 : 0xf8faf9);
+    sceneRef.current = scene;
+
     const camera = new THREE.PerspectiveCamera(60, mount.clientWidth / mount.clientHeight, 0.1, 100);
     camera.position.z = 7;
 
@@ -58,21 +67,23 @@ export default function ParticleField() {
       sizeAttenuation: true,
       vertexColors: true,
       transparent: true,
-      opacity: 1.0,
-      blending: THREE.AdditiveBlending,
+      opacity: isDark ? 1.0 : 0.2,
+      blending: isDark ? THREE.AdditiveBlending : THREE.NormalBlending,
       depthWrite: false,
     });
+    materialRef.current = material;
     const cloud = new THREE.Points(geometry, material);
     scene.add(cloud);
 
     // faint wireframe icosahedron at core
     const coreGeo = new THREE.IcosahedronGeometry(2.1, 1);
     const coreMat = new THREE.MeshBasicMaterial({
-      color: 0x2fa084,
+      color: isDark ? 0x2fa084 : 0x1f6f5f,
       wireframe: true,
       transparent: true,
-      opacity: 0.16,
+      opacity: isDark ? 0.16 : 0.18,
     });
+    coreMatRef.current = coreMat;
     const core = new THREE.Mesh(coreGeo, coreMat);
     scene.add(core);
 
@@ -121,6 +132,22 @@ export default function ParticleField() {
       if (renderer.domElement.parentNode) mount.removeChild(renderer.domElement);
     };
   }, []);
+
+  useEffect(() => {
+    const isDark = theme === "dark";
+    if (sceneRef.current) {
+      sceneRef.current.background = new THREE.Color(isDark ? 0x060b09 : 0xf8faf9);
+    }
+    if (materialRef.current) {
+      materialRef.current.opacity = isDark ? 1.0 : 0.2;
+      materialRef.current.blending = isDark ? THREE.AdditiveBlending : THREE.NormalBlending;
+      materialRef.current.needsUpdate = true;
+    }
+    if (coreMatRef.current) {
+      coreMatRef.current.opacity = isDark ? 0.16 : 0.18;
+      coreMatRef.current.color.set(isDark ? 0x2fa084 : 0x1f6f5f);
+    }
+  }, [theme]);
 
   return <div ref={mountRef} className="absolute inset-0" aria-hidden="true" />;
 }

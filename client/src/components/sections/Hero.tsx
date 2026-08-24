@@ -30,15 +30,15 @@ export default function Hero() {
   const portraitScale = useTransform(scrollYProgress, [0, 1], [1, 0.92]);
 
   return (
-    <section id="hero" ref={ref} className="relative min-h-screen flex items-center overflow-hidden bg-[#060B09]">
+    <section id="hero" ref={ref} className="relative min-h-screen flex items-center overflow-hidden bg-background transition-colors duration-300">
       {/* 3D canvas */}
       <motion.div style={{ y: fieldY }} className="absolute inset-0" aria-hidden="true">
         <ParticleField />
       </motion.div>
 
-      {/* deep charcoal radial backlight */}
+      {/* deep radial backlight */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(31,111,95,0.25)_0%,transparent_60%)] pointer-events-none" />
-      <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#060B09] via-[#060B09]/80 to-transparent pointer-events-none" />
+      <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-background via-background/80 to-transparent pointer-events-none" />
 
       {/* brand glyph backdrop */}
       <motion.div
@@ -215,7 +215,7 @@ function PortraitPanel() {
             (e.target as HTMLElement).style.display = 'none';
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#060B09]/80 via-transparent to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent pointer-events-none" />
       </div>
       <div className="flex items-center justify-between mt-3 px-1">
         <div className="flex items-center gap-2 font-mono text-[10px] tracking-[0.24em] text-[#6FCF97] font-semibold uppercase">
