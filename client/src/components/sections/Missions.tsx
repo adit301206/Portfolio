@@ -117,9 +117,9 @@ function MissionCard({ project, index }: { project: Project; index: number }) {
       onPointerLeave={onPointerLeave}
       data-project-card=""
       initial={false}
-      className={`hud-corner relative bg-card/55 border border-border/60 p-7 sm:p-9 backdrop-blur-sm transition-colors will-change-transform ${
+      className={`hud-corner relative bg-card border border-border p-7 sm:p-9 backdrop-blur-sm transition-all duration-300 shadow-md ${
         left ? "" : ""
-      } hover:border-[var(--card-accent,oklch(0.78_0.15_210))]`}
+      } hover:border-primary/60 hover:shadow-lg`}
     >
       {/* top meta row */}
       <div className="flex flex-wrap items-center justify-between gap-3 mb-5">
@@ -289,10 +289,10 @@ export default function Missions() {
               <div key={p.id} className="relative">
                 {/* waypoint node */}
                 <span
-                  className={`hidden lg:flex absolute -left-20 top-8 h-14 w-14 items-center justify-center rounded-full border border-border/70 bg-background font-mono text-[11px] font-semibold ${
+                  className={`hidden lg:flex absolute -left-20 top-8 h-14 w-14 items-center justify-center rounded-full border border-border bg-card font-mono text-[11px] font-semibold shadow-sm ${
                     p.category === "AI"
-                      ? "text-mint-sig border-mint-sig/50 shadow-[0_0_18px_rgba(111,207,151,0.25)]"
-                      : "text-nova border-nova/50 shadow-[0_0_18px_rgba(47,160,132,0.25)]"
+                      ? "text-primary dark:text-mint-sig border-primary/40 dark:border-mint-sig/50 shadow-[0_0_18px_rgba(23,92,79,0.15)]"
+                      : "text-primary dark:text-nova border-primary/40 dark:border-nova/50 shadow-[0_0_18px_rgba(23,92,79,0.15)]"
                   }`}
                   aria-hidden="true"
                 >

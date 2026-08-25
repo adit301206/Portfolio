@@ -19,7 +19,7 @@ const fades = {
 };
 
 const inputCls =
-  "w-full bg-void-2 border border-border/70 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/60 focus:border-nova focus:outline-none focus:ring-1 focus:ring-nova/40 transition-colors font-mono tracking-wide";
+  "w-full bg-void-2 border border-border px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/70 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary/40 transition-colors font-mono tracking-wide rounded-md";
 
 export default function Contact() {
   const [name, setName] = useState("");
@@ -53,24 +53,24 @@ export default function Contact() {
     <>
       <section id="contact" className="relative py-28 sm:py-36 overflow-hidden">
         <div
-          className="pointer-events-none absolute inset-0 opacity-[0.13]"
+          className="pointer-events-none absolute inset-0 opacity-[0.11]"
           style={{
             backgroundImage: "url(/manus-storage/nova-workspace_d22d0de7.png)",
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/80 to-background/95" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/85 to-background" />
 
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 text-center">
           <motion.div {...fades}>
             <div className="eyebrow mb-4 flex items-center justify-center gap-3">
-              <span className="blink h-2 w-2 rounded-full bg-mint-sig shadow-[0_0_10px_rgba(111,207,151,0.9)]" />
+              <span className="blink h-2 w-2 rounded-full bg-primary dark:bg-mint-sig shadow-[0_0_10px_rgba(23,92,79,0.7)]" />
               06 / Open Channel
             </div>
-            <h2 className="font-display text-4xl sm:text-6xl font-bold tracking-tight leading-[1.05]">
+            <h2 className="font-display text-4xl sm:text-6xl font-bold tracking-tight leading-[1.05] text-foreground">
               Let's build the <br />
-              <span className="text-nova glow-emerald"><GlitchText text="next mission" /></span> together
+              <span className="text-primary dark:text-nova glow-emerald"><GlitchText text="next mission" /></span> together
             </h2>
             <p className="mt-6 max-w-xl mx-auto text-lg text-muted-foreground leading-relaxed">
               Open to internships, collaborations, and interesting problems in AI and data.
@@ -83,13 +83,13 @@ export default function Contact() {
             {...fades}
             transition={{ ...fades.transition, delay: 0.12 }}
             onSubmit={onSubmit}
-            className="mt-12 text-left hud-corner relative bg-card/55 border border-border/60 backdrop-blur-sm p-6 sm:p-9 space-y-5"
+            className="mt-12 text-left hud-corner relative bg-card border border-border backdrop-blur-sm p-6 sm:p-9 space-y-5 shadow-lg rounded-xl"
           >
-            <div className="flex items-center justify-between border-b border-border/50 pb-4">
-              <span className="font-mono text-[10px] tracking-[0.28em] uppercase text-nova/70">
+            <div className="flex items-center justify-between border-b border-border/60 pb-4">
+              <span className="font-mono text-[10px] tracking-[0.28em] uppercase text-primary dark:text-nova/70 font-semibold">
                 // Live Transmission
               </span>
-              <span className="blink h-1.5 w-1.5 rounded-full bg-mint-sig shadow-[0_0_8px_rgba(111,207,151,0.9)]" />
+              <span className="blink h-1.5 w-1.5 rounded-full bg-primary dark:bg-mint-sig shadow-[0_0_8px_rgba(23,92,79,0.7)]" />
             </div>
 
             <div className="grid sm:grid-cols-2 gap-5">
@@ -154,15 +154,15 @@ export default function Contact() {
 
             <div className="flex flex-wrap items-center justify-between gap-4 pt-2">
               <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-muted-foreground">
-                <CheckCircle2 size={12} className="inline -mt-0.5 mr-1.5 text-mint-sig" />
+                <CheckCircle2 size={12} className="inline -mt-0.5 mr-1.5 text-primary dark:text-mint-sig" />
                 Stored in mission archive · Encrypted channel
               </span>
               <button
                 type="submit"
                 disabled={mutation.isPending}
                 data-cursor="SEND"
-                className="group relative inline-flex items-center gap-2.5 bg-nova text-primary-foreground font-mono text-[12px] tracking-[0.18em] uppercase px-8 py-3.5 hover:bg-nova/90 transition-colors active:scale-[0.97] disabled:opacity-60 disabled:cursor-wait"
-                style={{ boxShadow: "0 0 32px rgba(47,160,132,0.45)" }}
+                className="group relative inline-flex items-center gap-2.5 bg-primary text-primary-foreground font-mono text-[12px] tracking-[0.18em] uppercase px-8 py-3.5 hover:bg-primary/90 transition-colors active:scale-[0.97] rounded-lg disabled:opacity-60 disabled:cursor-wait"
+                style={{ boxShadow: "0 0 24px rgba(23,92,79,0.35)" }}
               >
                 {mutation.isPending ? <Loader2 size={14} className="animate-spin" /> : <Send size={14} />}
                 {mutation.isPending ? "Transmitting…" : "Transmit"}
@@ -175,16 +175,16 @@ export default function Contact() {
           <motion.div {...fades} transition={{ ...fades.transition, delay: 0.2 }} className="mt-10 flex flex-wrap justify-center gap-4">
             <a
               href={`mailto:${PROFILE.email}`}
-              className="inline-flex items-center gap-3 border border-border bg-card/85 backdrop-blur-sm px-8 py-4 font-mono text-[12px] tracking-[0.18em] uppercase text-foreground hover:border-primary hover:text-primary transition-colors active:scale-[0.97]"
+              className="inline-flex items-center gap-3 border border-border bg-card px-8 py-4 font-mono text-[12px] tracking-[0.18em] uppercase text-foreground hover:border-primary hover:text-primary transition-all shadow-sm rounded-lg active:scale-[0.97]"
             >
-              <Mail size={15} />
+              <Mail size={15} className="text-primary" />
               <span>{PROFILE.email}</span>
             </a>
             <a
               href={PROFILE.github}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-3 border border-border bg-card/85 backdrop-blur-sm px-8 py-4 font-mono text-[12px] tracking-[0.18em] uppercase text-foreground hover:border-primary hover:text-primary transition-colors active:scale-[0.97]"
+              className="inline-flex items-center gap-3 border border-border bg-card px-8 py-4 font-mono text-[12px] tracking-[0.18em] uppercase text-foreground hover:border-primary hover:text-primary transition-all shadow-sm rounded-lg active:scale-[0.97]"
             >
               <Github size={15} />
               <span>github.com/{PROFILE.handle}</span>
@@ -194,7 +194,7 @@ export default function Contact() {
         </div>
       </section>
 
-      <footer className="relative border-t border-border bg-card">
+      <footer className="relative border-t border-border bg-card text-foreground">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-10">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
             <div className="flex items-center gap-3">

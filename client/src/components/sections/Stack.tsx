@@ -48,7 +48,7 @@ export default function Stack() {
   return (
     <section id="stack" className="relative py-28 sm:py-36 overflow-hidden">
       {/* marquee band */}
-      <div className="relative border-y border-border/50 bg-void-2/60 py-5 overflow-hidden">
+      <div className="relative border-y border-border bg-void-2/90 py-5 overflow-hidden shadow-xs">
         <div className="marquee-track items-center">
           {[0, 1].map((half) => (
             <div key={half} className="flex items-center shrink-0" aria-hidden={half === 1}>
@@ -57,7 +57,7 @@ export default function Stack() {
                   <span className="font-mono text-sm tracking-[0.16em] uppercase text-muted-foreground px-5">
                     {t}
                   </span>
-                  <span className="h-1.5 w-1.5 rounded-full bg-nova/50" />
+                  <span className="h-1.5 w-1.5 rounded-full bg-primary/40 dark:bg-nova/50" />
                 </span>
               ))}
             </div>
@@ -73,10 +73,10 @@ export default function Stack() {
           transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
         >
           <div className="eyebrow mb-4">
-            <span className="text-nova/70">04</span> / Core Systems
+            <span className="text-primary dark:text-nova/70 font-mono">04</span> / Core Systems
           </div>
-          <h2 className="font-display text-4xl sm:text-5xl font-bold tracking-tight">
-            Engineered with the <span className="text-mint-sig glow-mint">right tools</span>
+          <h2 className="font-display text-4xl sm:text-5xl font-bold tracking-tight text-foreground">
+            Engineered with the <span className="text-primary dark:text-mint-sig glow-mint">right tools</span>
           </h2>
           <p className="mt-4 max-w-2xl text-muted-foreground text-lg leading-relaxed">
             The NOVA console runs on a stack tuned for AI experiments, backend
@@ -92,17 +92,17 @@ export default function Stack() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.55, delay: 0.06 * i, ease: [0.23, 1, 0.32, 1] }}
-              className="hud-corner border border-border/60 bg-card/50 p-7"
+              className="hud-corner border border-border bg-card p-7 shadow-md rounded-xl hover:border-primary/50 transition-all"
             >
               <div className="flex items-center gap-3 mb-5">
                 <g.icon size={18} className={g.accent} />
-                <h3 className="font-display font-semibold text-lg">{g.title}</h3>
+                <h3 className="font-display font-semibold text-lg text-foreground">{g.title}</h3>
               </div>
               <div className="flex flex-wrap gap-2">
                 {g.items.map((t) => (
                   <span
                     key={t}
-                    className="font-mono text-[11px] tracking-[0.14em] uppercase px-3 py-1.5 border border-border/60 bg-void-2 text-foreground/85 hover:border-nova/60 hover:text-nova transition-colors"
+                    className="font-mono text-[11px] tracking-[0.14em] uppercase px-3 py-1.5 border border-border bg-void-2 text-foreground/90 font-medium hover:border-primary hover:text-primary transition-colors rounded-md"
                   >
                     {t}
                   </span>
