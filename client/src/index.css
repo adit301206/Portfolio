@@ -70,38 +70,38 @@
 :root {
   --radius: 0.25rem;
 
-  /* Warm off-white / light cream background tones */
-  --background: #F4F7F5;          /* Soft, premium off-white canvas */
-  --foreground: #0D2821;          /* Ultra-deep forest charcoal for crisp text */
-  --card: #FFFFFF;                /* Crisp surface for telemetry and cards */
-  --card-foreground: #133E35;
-  --popover: #FFFFFF;
-  --popover-foreground: #133E35;
+  /* Canvas & Layered Surfaces */
+  --background: #EDF3F0;          /* Soft sage/mint canvas instead of stark white */
+  --foreground: #09231D;          /* Deep forest charcoal for crisp text */
+  --card: #F7FAF8;                /* Elevated warm cream-mint surface */
+  --card-foreground: #09231D;
+  --popover: #F7FAF8;
+  --popover-foreground: #09231D;
 
-  /* Emerald and Teal Hierarchy */
-  --primary: #1F6F5F;             /* Deep rich emerald for primary buttons/accents */
+  /* Brand & Emerald Hierarchy */
+  --primary: #175C4F;             /* Deep rich emerald for primary actions */
   --primary-foreground: #FFFFFF;
-  --secondary: #E8F1EE;           /* Muted cream-mint for tag backgrounds */
-  --secondary-foreground: #133E35;
-  --muted: #E2ECE8;
-  --muted-foreground: #385850;    /* High-contrast slate-green for body copy & subtext */
-  --accent: #2FA084;              /* Vibrant interactive teal */
+  --secondary: #DCEBE5;           /* Soft sage-mint for badges and pill tags */
+  --secondary-foreground: #103D34;
+  --muted: #DFEAE6;               /* Subdued surface for borders & dividers */
+  --muted-foreground: #2A5248;    /* High-contrast dark moss for descriptions */
+  --accent: #278E75;              /* Vibrant mid-tone teal for highlights */
   --accent-foreground: #FFFFFF;
-  --border: rgba(31, 111, 95, 0.16);
-  --input: rgba(31, 111, 95, 0.1);
-  --ring: #1F6F5F;
+  --border: rgba(23, 92, 79, 0.18);
+  --input: rgba(23, 92, 79, 0.12);
+  --ring: #175C4F;
 
   --destructive: #E54D2E;
   --destructive-foreground: #FFFFFF;
 
-  /* Brand Tokens in Light Mode */
-  --nova: #1F6F5F;
-  --nova-dim: #2FA084;
-  --mint-sig: #1F6F5F;
-  --amber-sig: #C07D18;
-  --ml-purple: #1F6F5F;
-  --void: #F4F7F5;
-  --void-2: #FFFFFF;
+  /* HUD & Brand Accents */
+  --nova: #175C4F;
+  --nova-dim: #278E75;
+  --mint-sig: #208B72;
+  --amber-sig: #B87314;
+  --ml-purple: #175C4F;
+  --void: #E2ECE8;
+  --void-2: #F0F6F3;
 }
 
 .dark {
@@ -225,7 +225,7 @@
   .font-mono { font-family: var(--font-mono); }
 
   .hero-white-gradient {
-    background: linear-gradient(180deg, #0D2821 0%, #1F6F5F 100%);
+    background: linear-gradient(180deg, #09231D 0%, #175C4F 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
@@ -236,6 +236,11 @@
   }
 
   .text-gradient-mint {
+    background: linear-gradient(135deg, #278E75 0%, #175C4F 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .dark .text-gradient-mint {
     background: linear-gradient(135deg, #6FCF97 0%, #2FA084 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -251,42 +256,43 @@
 
   /* ===== Glassmorphism & Surface Cards ===== */
   .glass-card {
-    background: rgba(255, 255, 255, 0.85);
+    background: rgba(247, 250, 248, 0.88);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(31, 111, 95, 0.15);
-    box-shadow: 0 10px 30px -5px rgba(31, 111, 95, 0.08);
+    border: 1px solid var(--border);
+    box-shadow: 0 10px 30px -5px rgba(23, 92, 79, 0.12), inset 0 1px 0 0 rgba(255, 255, 255, 0.8);
     transition: background 300ms, border-color 300ms, box-shadow 300ms;
   }
   .dark .glass-card {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.12);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4), inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
   }
 
   /* ===== Buttons & CTAs ===== */
   .btn-primary-teal {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
     color: #FFFFFF !important;
-    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.35), 0 4px 20px -2px rgba(47, 160, 132, 0.4);
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.35), 0 4px 20px -2px rgba(23, 92, 79, 0.4);
     transition: all 300ms cubic-bezier(0.23, 1, 0.32, 1);
   }
   .btn-primary-teal:hover {
-    background: linear-gradient(135deg, #38B898 0%, #2FA084 100%);
-    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.5), 0 6px 25px 0 rgba(111, 207, 151, 0.5);
+    background: linear-gradient(135deg, #278E75 0%, #175C4F 100%);
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.5), 0 6px 25px 0 rgba(39, 142, 117, 0.45);
   }
 
   .btn-secondary-glass {
     background: var(--card);
     border: 1px solid var(--border);
     color: var(--foreground);
+    box-shadow: 0 2px 8px -2px rgba(23, 92, 79, 0.08), inset 0 1px 0 0 rgba(255, 255, 255, 0.6);
     transition: all 300ms cubic-bezier(0.23, 1, 0.32, 1);
   }
   .btn-secondary-glass:hover {
     background: var(--secondary);
-    border-color: var(--accent);
-    color: var(--accent);
-    box-shadow: 0 0 20px -3px rgba(47, 160, 132, 0.25);
+    border-color: var(--primary);
+    color: var(--secondary-foreground);
+    box-shadow: 0 0 20px -3px rgba(23, 92, 79, 0.2);
   }
 
   .hud-corner {

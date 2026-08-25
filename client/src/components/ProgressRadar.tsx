@@ -96,10 +96,10 @@ export default function ProgressRadar() {
       className="fixed bottom-6 right-6 z-50 hidden md:block"
       aria-label="Flight progress radar"
     >
-      <div className="relative glass-card rounded-2xl p-2.5 border border-white/15 shadow-[0_8px_32px_0_rgba(0,0,0,0.6)] cursor-default">
+      <div className="relative glass-card rounded-2xl p-2.5 border border-border shadow-lg cursor-default">
         <svg width={SIZE} height={SIZE} viewBox={`0 0 ${SIZE} ${SIZE}`} className="block">
           {/* background ring track */}
-          <circle cx={cx} cy={cy} r={r} fill="none" stroke="rgba(255, 255, 255, 0.08)" strokeWidth={STROKE} />
+          <circle cx={cx} cy={cy} r={r} fill="none" stroke="var(--border)" strokeWidth={STROKE} />
 
           {/* dynamic progress arc stroke */}
           <circle
@@ -107,7 +107,7 @@ export default function ProgressRadar() {
             cy={cy}
             r={r}
             fill="none"
-            stroke="#2FA084"
+            stroke="var(--primary)"
             strokeWidth={STROKE}
             strokeLinecap="round"
             strokeDasharray={circumference}
@@ -128,7 +128,7 @@ export default function ProgressRadar() {
                 cx={wx}
                 cy={wy}
                 r={active ? 3.5 : 2}
-                fill={active ? "#6FCF97" : "rgba(255, 255, 255, 0.25)"}
+                fill={active ? "var(--accent)" : "var(--muted-foreground)"}
                 style={{ transition: "all 200ms ease" }}
               />
             );
@@ -140,13 +140,14 @@ export default function ProgressRadar() {
             y1={cy}
             x2={blipX}
             y2={blipY}
-            stroke="rgba(111, 207, 151, 0.7)"
+            stroke="var(--accent)"
             strokeWidth={1.5}
             strokeDasharray="2 2"
+            opacity={0.75}
           />
 
           {/* live continuous blip dot */}
-          <circle cx={blipX} cy={blipY} r={4.5} fill="#6FCF97" className="drop-shadow-[0_0_8px_rgba(111,207,151,0.9)]" />
+          <circle cx={blipX} cy={blipY} r={4.5} fill="var(--accent)" className="drop-shadow-[0_0_8px_rgba(39,142,117,0.8)]" />
 
           {/* center readout: active section & percent */}
           <text
@@ -155,7 +156,7 @@ export default function ProgressRadar() {
             textAnchor="middle"
             className="font-mono"
             fontSize={9}
-            fill="#CBD5E1"
+            fill="var(--muted-foreground)"
             style={{ letterSpacing: "0.14em", fontWeight: 600 }}
           >
             {SECTIONS[activeIdx]?.label.toUpperCase() ?? "HERO"}
@@ -166,7 +167,7 @@ export default function ProgressRadar() {
             textAnchor="middle"
             className="font-mono font-bold"
             fontSize={11}
-            fill="#6FCF97"
+            fill="var(--primary)"
             style={{ letterSpacing: "0.08em" }}
           >
             {Math.round(progress * 100)}%

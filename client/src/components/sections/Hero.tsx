@@ -37,7 +37,7 @@ export default function Hero() {
       </motion.div>
 
       {/* deep radial backlight */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(31,111,95,0.25)_0%,transparent_60%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(23,92,79,0.14)_0%,transparent_60%)] pointer-events-none" />
       <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-background via-background/80 to-transparent pointer-events-none" />
 
       {/* brand glyph backdrop */}
@@ -67,9 +67,9 @@ export default function Hero() {
         animate={{ opacity: 1 }}
         transition={{ delay: 1.6, duration: 0.8 }}
       >
-        <span className="font-mono text-[9px] tracking-[0.4em] uppercase text-[#94A3B8]">Scroll</span>
+        <span className="font-mono text-[9px] tracking-[0.4em] uppercase text-muted-foreground font-medium">Scroll</span>
         <motion.div
-          className="h-10 w-px bg-gradient-to-b from-[#6FCF97] to-transparent origin-top"
+          className="h-10 w-px bg-gradient-to-b from-primary dark:from-[#6FCF97] to-transparent origin-top"
           animate={{ scaleY: [0.2, 1, 0.2] }}
           transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
         />
@@ -90,7 +90,7 @@ function HeroContent() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <span className="blink h-2 w-2 rounded-full bg-primary dark:bg-[#6FCF97] shadow-[0_0_12px_rgba(47,160,132,0.9)]" />
+            <span className="blink h-2 w-2 rounded-full bg-primary dark:bg-[#6FCF97] shadow-[0_0_12px_rgba(23,92,79,0.7)]" />
             <span className="text-muted-foreground tracking-[0.25em]">SYSTEM ONLINE · ENGINEERING INTELLIGENCE CONSOLE</span>
           </motion.div>
 
@@ -197,15 +197,15 @@ function ResumeButton() {
         <FileDown size={14} />
       </motion.span>
       <span className="relative font-medium">Download Resume</span>
-      <span className="relative h-1.5 w-1.5 rounded-full bg-[#6FCF97] shadow-[0_0_8px_rgba(111,207,151,0.9)] animate-pulse" />
+      <span className="relative h-1.5 w-1.5 rounded-full bg-primary dark:bg-[#6FCF97] shadow-[0_0_8px_rgba(23,92,79,0.7)] animate-pulse" />
     </a>
   );
 }
 
 function PortraitPanel() {
   return (
-    <div className="glass-card relative p-3.5 rounded-2xl border border-white/12 shadow-[0_8px_32px_0_rgba(0,0,0,0.5)]">
-      <div className="relative rounded-xl overflow-hidden aspect-square border border-white/10">
+    <div className="glass-card relative p-3.5 rounded-2xl border border-border shadow-lg">
+      <div className="relative rounded-xl overflow-hidden aspect-square border border-border/60">
         <img
           src="/manus-storage/nova-portrait_aace7998.png"
           alt="Adit Kapadiya — NOVA operator portrait"
@@ -218,11 +218,11 @@ function PortraitPanel() {
         <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent pointer-events-none" />
       </div>
       <div className="flex items-center justify-between mt-3 px-1">
-        <div className="flex items-center gap-2 font-mono text-[10px] tracking-[0.24em] text-[#6FCF97] font-semibold uppercase">
-          <span className="h-1.5 w-1.5 rounded-full bg-[#6FCF97] shadow-[0_0_8px_rgba(111,207,151,0.9)]" />
+        <div className="flex items-center gap-2 font-mono text-[10px] tracking-[0.24em] text-primary dark:text-[#6FCF97] font-semibold uppercase">
+          <span className="h-1.5 w-1.5 rounded-full bg-primary dark:bg-[#6FCF97] shadow-[0_0_8px_rgba(23,92,79,0.7)]" />
           OPERATOR 001 · ACTIVE
         </div>
-        <div className="font-mono text-[10px] tracking-[0.22em] text-[#CBD5E1] uppercase">
+        <div className="font-mono text-[10px] tracking-[0.22em] text-muted-foreground uppercase font-medium">
           ADIT KAPADIYA//
         </div>
       </div>

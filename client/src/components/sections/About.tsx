@@ -108,9 +108,9 @@ export default function About() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-60px" }}
                   transition={{ delay: 0.2 + i * 0.08, duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
-                  className="glass-card rounded-2xl p-6 group hover:border-primary/40 transition-all"
+                  className="glass-card rounded-2xl p-6 group hover:border-primary/50 transition-all border border-border shadow-sm"
                 >
-                  <f.icon size={22} className="text-primary dark:text-[#6FCF97] mb-4 group-hover:drop-shadow-[0_0_10px_rgba(47,160,132,0.8)] transition-all" />
+                  <f.icon size={22} className="text-primary dark:text-[#6FCF97] mb-4 group-hover:drop-shadow-[0_0_10px_rgba(23,92,79,0.6)] transition-all" />
                   <h3 className="font-display font-semibold text-foreground mb-2">{f.title}</h3>
                   <p className="text-sm text-muted-foreground leading-relaxed font-sans">{f.text}</p>
                 </motion.div>
@@ -151,7 +151,7 @@ export default function About() {
                 ))}
               </div>
               <div className="mt-10 pt-6 border-t border-border font-mono text-[10px] tracking-[0.2em] uppercase text-muted-foreground flex items-center gap-3">
-                <span className="blink h-2 w-2 rounded-full bg-primary dark:bg-[#6FCF97] shadow-[0_0_10px_rgba(47,160,132,0.9)]" />
+                <span className="blink h-2 w-2 rounded-full bg-primary dark:bg-[#6FCF97] shadow-[0_0_10px_rgba(23,92,79,0.7)]" />
                 Status: Active Mission Operator
               </div>
               </motion.div>

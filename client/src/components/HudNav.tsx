@@ -93,28 +93,28 @@ export default function HudNav() {
           <div className="flex items-center gap-3">
             <button
               onClick={toggleTheme}
-              className="border border-border bg-card/40 hover:border-primary p-2 rounded-lg transition-all active:scale-95 flex items-center justify-center"
+              className="border border-border bg-card/80 hover:border-primary p-2 rounded-lg transition-all active:scale-95 flex items-center justify-center shadow-xs"
               aria-label="Toggle theme"
             >
               {theme === "dark" ? (
-                <Sun className="w-4 h-4 text-emerald-600" />
+                <Sun className="w-4 h-4 text-emerald-400" />
               ) : (
-                <Moon className="w-4 h-4 text-[#6FCF97]" />
+                <Moon className="w-4 h-4 text-[#175C4F]" />
               )}
             </button>
             <a
               href={PROFILE.github}
               target="_blank"
               rel="noreferrer"
-              className="hidden sm:inline-flex items-center gap-2 border border-border bg-card/40 px-4 py-2 font-mono text-[11px] tracking-[0.18em] uppercase text-foreground hover:border-primary hover:text-primary transition-all rounded-md"
+              className="hidden sm:inline-flex items-center gap-2 border border-border bg-card/80 px-4 py-2 font-mono text-[11px] tracking-[0.18em] uppercase text-foreground hover:border-primary hover:text-primary transition-all rounded-md shadow-xs"
             >
               <Github size={14} />
               <span className="hidden lg:inline">GitHub</span>
-              <ArrowUpRight size={12} className="text-primary" />
+              <ArrowUpRight size={12} className="text-primary dark:text-[#6FCF97]" />
             </a>
             <button
               onClick={() => setOpen(!open)}
-              className="md:hidden p-2 text-foreground border border-border rounded-lg"
+              className="md:hidden p-2 text-foreground border border-border bg-card/80 rounded-lg"
               aria-label="Toggle menu"
             >
               {open ? <X size={18} /> : <Menu size={18} />}
